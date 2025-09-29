@@ -1,3 +1,6 @@
+
+// The spread operator allows an iterable (like an array or object) to be expanded into individual elements.
+
 // spread
 
 const fruits = ["orange", "apple", "banana", "mango"];
@@ -23,6 +26,8 @@ const person2 = {
 };
 
 // merging
+
+// Combining two or more arrays or objects into one.
 
 const peopleData = { ...person1, ...person2 };
 

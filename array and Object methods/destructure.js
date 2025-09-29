@@ -1,3 +1,6 @@
+
+// Extract values from arrays or objects into separate variables.
+
 // array destruction
 
 const fruits = ["apple", "banana", "mango", "popeye", "strawberry"];
