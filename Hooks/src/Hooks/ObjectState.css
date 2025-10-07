@@ -1,0 +1,84 @@
+/* Body Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #eef2f7;
+  padding: 40px;
+}
+
+/* Container Styling */
+div {
+  text-align: center;
+}
+
+/* Input Container */
+input {
+  padding: 12px 15px;
+  width: 280px;
+  margin: 8px 0;
+  border-radius: 12px;
+  border: 2px solid #0077ff;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #00d4ff;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+/* Button Styling */
+button {
+  padding: 12px 25px;
+  margin: 15px 5px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background: linear-gradient(45deg, #0077ff, #00d4ff);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Live Preview Headings */
+h1 {
+  color: #333;
+  margin: 6px 0;
+}
+
+/* Table Styling */
+table {
+  margin: 30px auto 0 auto;
+  width: 85%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  font-size: 15px;
+  color: #333;
+}
+
+th {
+  background: linear-gradient(45deg, #0077ff, #00d4ff);
+  color: #fff;
+  text-transform: uppercase;
+}
+
+tr:hover {
+  background-color: #f0f8ff;
+  transition: 0.3s;
+}
