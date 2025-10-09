@@ -1,4 +1,4 @@
-.user-container {
+/* .user-container {
   text-align: center;
   padding: 30px;
   background: #f9fafc;
@@ -93,4 +93,51 @@
   .user-title {
     font-size: 1.5rem;
   }
+} */
+
+.table-container {
+  width: 90%;
+  margin: 30px auto;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+}
+
+button {
+  margin-bottom: 20px;
+  padding: 10px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #e0e7ff;
 }

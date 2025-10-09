@@ -1,0 +1,36 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+  font-family: "Poppins", sans-serif;
+}
+
+.input-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.input-container input {
+  width: 250px;
+  padding: 10px 15px;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-container input:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 8px rgba(0, 91, 187, 0.3);
+}
+
+.input-container h1 {
+  margin-top: 25px;
+  color: #0056b3;
+  font-size: 28px;
+  text-transform: capitalize;
+}
