@@ -1,0 +1,31 @@
+.form {
+  background-color: #e3f2fd;
+  width: 280px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #90caf9;
+  border-radius: 5px;
+}
+
+.btn {
+  background-color: #2196f3;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1976d2;
+}
