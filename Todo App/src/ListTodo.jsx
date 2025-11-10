@@ -1,30 +1,34 @@
-const ListTodo = ({ todo }) => {
-  if (!todo.length) return <p className="no-todo">No todos yet!</p>;
+import React from "react";
 
+const ListTodo = ({ todo, editTodo, deleteTodo }) => {
   return (
-    <table className="todo-table">
-      <thead>
-        <tr>
-          <th>Task</th>
-          <th>Description</th>
-          <th colSpan="2">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {todo.map((item) => (
-          <tr key={item.id}>
-            <td>{item.task}</td>
-            <td>{item.description}</td>
-            <td>
-              <button className="btn edit-btn">Edit</button>
-            </td>
-            <td>
-              <button className="btn delete-btn">Delete</button>
-            </td>
+    <>
+      <table border="1px solid black">
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Description</th>
+            <th colSpan="2">Actions</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {todo.map((todo) => {
+            return (
+              <tr key={todo.id}>
+                <td>{todo.task}</td>
+                <td>{todo.description}</td>
+                <td>
+                  <button onClick={() => editTodo(todo.id)}>edit</button>
+                </td>
+                <td>
+                  <button onClick={() => deleteTodo(todo.id)}>delete</button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
   );
 };
 
