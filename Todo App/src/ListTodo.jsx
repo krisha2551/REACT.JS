@@ -32,4 +32,4 @@ const ListTodo = ({ todo, editTodo, deleteTodo }) => {
   );
 };
 
-export default ListTodo;
+export default ListTodo; 
