@@ -1,10 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./component/Home";
+
 import MainLayout from "../routes/MainLayout";
 import About from "./component/About";
 import Service from "./component/Service";
-import Product from "./component/Product";
 import ErrorPage from "./component/ErrorPage";
+import ModernLoader from "./component/Loading";
+import { lazy, Suspense } from "react";
+
+const Home = lazy(() => import("./component/Home"));
+const Product = lazy(() => import("./component/Product"));
 
 const App = () => {
   const router = createBrowserRouter([
@@ -35,7 +39,9 @@ const App = () => {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <Suspense fallback={<ModernLoader />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </>
   );
 };
