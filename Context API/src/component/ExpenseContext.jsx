@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const expense = createContext({
   add: () => {},
-  list: () => {},
+  list: [],
   update: () => {},
   delete: () => {},
 });
@@ -22,7 +22,7 @@ const ExpenseContext = ({ children }) => {
 
   const add = (input) => {
     const newData = {
-      id: Date.now(),
+      id: new Date().getTime(),
       title: input.title,
       amount: input.amount,
       category: input.category,
@@ -32,11 +32,14 @@ const ExpenseContext = ({ children }) => {
     setData((prev) => [...prev, newData]);
   };
 
-  return (
-    <expense.Provider value={{ data, add }}>
-      {children}
-    </expense.Provider>
-  );
+  console.log("data", data);
+
+  const value = {
+    add,
+    list: data,
+  };
+
+  return <expense.Provider value={value}>{children}</expense.Provider>;
 };
 
 export default ExpenseContext;

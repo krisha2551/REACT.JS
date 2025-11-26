@@ -12,18 +12,19 @@ const ExpenseForm = () => {
   const { add } = useContext(expense);
 
   const handleChange = (identifier, e) => {
-    setInput((prev) => ({
-      ...prev,
-      [identifier]: e.target.value,
-    }));
+    setInput((prev) => {
+      return {
+        ...prev,
+        [identifier]: e.target.value,
+      };
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // console.log("inputData", input);
     add(input);
-
-    
-    setInput({ title: "", amount: 0, type: "debit", category: "" });
+    setInput({ title: "", amount: 0, type: "", category: "" });
   };
 
   return (
@@ -36,8 +37,9 @@ const ExpenseForm = () => {
           value={input.title}
           onChange={(e) => handleChange("title", e)}
         />
-        <br /><br /><br />
-
+        <br />
+        <br />
+        <br />
         <label htmlFor="amount">amount</label>
         <input
           type="number"
@@ -45,8 +47,9 @@ const ExpenseForm = () => {
           value={input.amount}
           onChange={(e) => handleChange("amount", e)}
         />
-        <br /><br /><br />
-
+        <br />
+        <br />
+        <br />
         <div>
           <span>credit</span>
           <input
@@ -57,35 +60,35 @@ const ExpenseForm = () => {
             checked={input.type === "credit"}
             onChange={(e) => handleChange("type", e)}
           />
-
           <span>debit</span>
           <input
             type="radio"
-            id="debit"
             name="type"
+            id="debit"
             value="debit"
             checked={input.type === "debit"}
             onChange={(e) => handleChange("type", e)}
           />
         </div>
-
-        <br /><br /><br />
-
+        <br />
+        <br />
+        <br />
         <label htmlFor="category">category</label>
         <select
+          name="category"
           id="category"
           value={input.category}
           onChange={(e) => handleChange("category", e)}
         >
           <option value="">select category</option>
-          <option value="general">General</option>
+          <option value="general">general</option>
           <option value="travel">Travel</option>
           <option value="food">Food</option>
           <option value="shopping">Shopping</option>
         </select>
-
-        <br /><br /><br />
-
+        <br />
+        <br />
+        <br />
         <button type="submit">add</button>
       </form>
     </>
