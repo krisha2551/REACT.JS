@@ -4,7 +4,8 @@ export const expense = createContext({
   add: () => {},
   list: [],
   update: () => {},
-  delete: () => {},
+  deleteData: () => {},
+  editValue: null,
 });
 
 const ExpenseContext = ({ children }) => {
@@ -20,23 +21,63 @@ const ExpenseContext = ({ children }) => {
 
   const [data, setData] = useState(initialState);
 
-  const add = (input) => {
-    const newData = {
-      id: new Date().getTime(),
-      title: input.title,
-      amount: input.amount,
-      category: input.category,
-      type: input.type,
-    };
+  const [editValue, setEditValue] = useState(null);
 
-    setData((prev) => [...prev, newData]);
+  const add = (input) => {
+    if (!input.title || !input.amount || !input.category || !input.type) {
+      alert("please fill all the data required");
+    } else if (editValue) {
+      setData((prev) =>
+        prev.map((d) =>
+          d.id === editValue.id
+            ? {
+                ...d,
+                title: input.title,
+                amount: input.amount,
+                category: input.category,
+                type: input.type,
+              }
+            : d
+        )
+      );
+      setEditValue(null);
+    } else {
+      const newData = {
+        id: new Date().getTime(),
+        title: input.title,
+        amount: input.amount,
+        category: input.category,
+        type: input.type,
+      };
+
+      setData((prev) => [...prev, newData]);
+    }
   };
 
   console.log("data", data);
 
+  const update = (id) => {
+    console.log("id", id);
+
+    const updateVal = data.find((d) => d.id === id);
+
+    console.log("update", updateVal);
+
+    setEditValue(updateVal);
+  };
+
+  const deleteData = (id) => {
+    const remainData = data.filter((d) => d.id !== id);
+
+    setData(remainData);
+  };
+
   const value = {
     add,
     list: data,
+    update,
+    editValue,
+    deleteData,
   };
 
   return <expense.Provider value={value}>{children}</expense.Provider>;

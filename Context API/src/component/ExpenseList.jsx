@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { expense } from "./ExpenseContext";
 
 const ExpenseList = () => {
-  const { list } = useContext(expense);
+  const { list, update, deleteData } = useContext(expense);
 
   return (
     <>
@@ -14,6 +14,7 @@ const ExpenseList = () => {
             <th>amount</th>
             <th>type</th>
             <th>category</th>
+            <th colSpan={2}>actions</th>
           </tr>
         </thead>
         <tbody>
@@ -24,6 +25,12 @@ const ExpenseList = () => {
                 <td>{l.amount}</td>
                 <td>{l.type}</td>
                 <td>{l.category}</td>
+                <td>
+                  <button onClick={() => update(l.id)}>edit</button>
+                </td>
+                <td>
+                  <button onClick={() => deleteData(l.id)}>delete</button>
+                </td>
               </tr>
             );
           })}
