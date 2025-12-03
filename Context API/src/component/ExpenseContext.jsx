@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const expense = createContext({
   add: () => {},
@@ -22,9 +22,10 @@ const ExpenseContext = ({ children }) => {
     },
   ];
 
-  const [data, setData] = useState(initialState);
-
-  console.log("data", data);
+  const [data, setData] = useState(() => {
+    const saved = localStorage.getItem("expenses");
+    return saved ? JSON.parse(saved) : initialState;
+  });
 
   const [editValue, setEditValue] = useState(null);
 
@@ -59,21 +60,17 @@ const ExpenseContext = ({ children }) => {
     }
   };
 
-  console.log("data", data);
+  useEffect(() => {
+    localStorage.setItem("expenses", JSON.stringify(data));
+  }, [data]);
 
   const update = (id) => {
-    console.log("id", id);
-
     const updateVal = data.find((d) => d.id === id);
-
-    console.log("update", updateVal);
-
     setEditValue(updateVal);
   };
 
   const deleteData = (id) => {
     const remainData = data.filter((d) => d.id !== id);
-
     setData(remainData);
   };
 
@@ -92,12 +89,6 @@ const ExpenseContext = ({ children }) => {
     }, 0);
 
   const balance = credit - debit;
-
-  console.log("credit", credit);
-
-  console.log("debit", debit);
-
-  console.log("balance", balance);
 
   const value = {
     add,
