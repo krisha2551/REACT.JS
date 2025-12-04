@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import QUESTIONS from "../../qns.js"
+import QUESTIONS from "../../src/qns.js"
 
 const Quiz = () => {
 
