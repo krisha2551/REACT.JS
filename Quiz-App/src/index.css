@@ -1,0 +1,11 @@
+.selected{
+    background-color: rgb(150, 150, 255);
+}
+
+.correct{
+    background-color: greenyellow;
+}
+
+.wrong{
+    background-color: red;
+}
