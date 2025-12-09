@@ -50,4 +50,4 @@ const Answer = ({answer,selected,answerState,onSelect}) => {
   )
 }
 
-export default Answer
+export default Answer;
