@@ -38,7 +38,7 @@ const Question = ({
     }, 1000);
   };
 
-  let timer = 15000
+  let timer = 3000
 
 
   if(answer.selected !==""){

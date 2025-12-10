@@ -40,7 +40,7 @@ const Answer = ({answer,selected,answerState,onSelect}) => {
 
           return (
             <li key={ans}>
-              <button onClick={() => onSelect(ans)} className={cssClasses}>
+              <button onClick={() => onSelect(ans)} className={cssClasses}  disabled={selected !== ""} >
                 {ans}
               </button>
             </li>
@@ -50,4 +50,4 @@ const Answer = ({answer,selected,answerState,onSelect}) => {
   )
 }
 
-export default Answer;
+export default Answer
