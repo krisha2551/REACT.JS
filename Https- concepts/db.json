@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "age": 20,
+    "email": "alice.johnson@example.com",
+    "department": "Computer Science",
+    "gpa": 3.8
+  },
+  {
+    "id": 2,
+    "name": "Michael Smith",
+    "age": 22,
+    "email": "michael.smith@example.com",
+    "department": "Mechanical Engineering",
+    "gpa": 3.4
+  },
+  {
+    "id": 3,
+    "name": "Sophia Martinez",
+    "age": 19,
+    "email": "sophia.martinez@example.com",
+    "department": "Business Administration",
+    "gpa": 3.9
+  },
+  {
+    "id": 4,
+    "name": "Daniel Kim",
+    "age": 21,
+    "email": "daniel.kim@example.com",
+    "department": "Electrical Engineering",
+    "gpa": 3.6
+  },
+  {
+    "id": 5,
+    "name": "Emma Brown",
+    "age": 20,
+    "email": "emma.brown@example.com",
+    "department": "Psychology",
+    "gpa": 3.7
+  },
+  {
+    "id": 6,
+    "name": "Liam Wilson",
+    "age": 23,
+    "email": "liam.wilson@example.com",
+    "department": "Information Technology",
+    "gpa": 3.3
+  },
+  {
+    "id": 7,
+    "name": "Olivia Davis",
+    "age": 18,
+    "email": "olivia.davis@example.com",
+    "department": "Biology",
+    "gpa": 3.85
+  },
+  {
+    "id": 8,
+    "name": "Noah Anderson",
+    "age": 21,
+    "email": "noah.anderson@example.com",
+    "department": "Chemistry",
+    "gpa": 3.2
+  },
+  {
+    "id": 9,
+    "name": "Ava Thompson",
+    "age": 22,
+    "email": "ava.thompson@example.com",
+    "department": "Mathematics",
+    "gpa": 3.95
+  },
+  {
+    "id": 10,
+    "name": "Ethan Garcia",
+    "age": 20,
+    "email": "ethan.garcia@example.com",
+    "department": "Physics",
+    "gpa": 3.5
+  }
+]
