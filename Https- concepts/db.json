@@ -1,82 +1,164 @@
-[
-  {
-    "id": 1,
-    "name": "Alice Johnson",
-    "age": 20,
-    "email": "alice.johnson@example.com",
-    "department": "Computer Science",
-    "gpa": 3.8
-  },
-  {
-    "id": 2,
-    "name": "Michael Smith",
-    "age": 22,
-    "email": "michael.smith@example.com",
-    "department": "Mechanical Engineering",
-    "gpa": 3.4
-  },
-  {
-    "id": 3,
-    "name": "Sophia Martinez",
-    "age": 19,
-    "email": "sophia.martinez@example.com",
-    "department": "Business Administration",
-    "gpa": 3.9
-  },
-  {
-    "id": 4,
-    "name": "Daniel Kim",
-    "age": 21,
-    "email": "daniel.kim@example.com",
-    "department": "Electrical Engineering",
-    "gpa": 3.6
-  },
-  {
-    "id": 5,
-    "name": "Emma Brown",
-    "age": 20,
-    "email": "emma.brown@example.com",
-    "department": "Psychology",
-    "gpa": 3.7
-  },
-  {
-    "id": 6,
-    "name": "Liam Wilson",
-    "age": 23,
-    "email": "liam.wilson@example.com",
-    "department": "Information Technology",
-    "gpa": 3.3
-  },
-  {
-    "id": 7,
-    "name": "Olivia Davis",
-    "age": 18,
-    "email": "olivia.davis@example.com",
-    "department": "Biology",
-    "gpa": 3.85
-  },
-  {
-    "id": 8,
-    "name": "Noah Anderson",
-    "age": 21,
-    "email": "noah.anderson@example.com",
-    "department": "Chemistry",
-    "gpa": 3.2
-  },
-  {
-    "id": 9,
-    "name": "Ava Thompson",
-    "age": 22,
-    "email": "ava.thompson@example.com",
-    "department": "Mathematics",
-    "gpa": 3.95
-  },
-  {
-    "id": 10,
-    "name": "Ethan Garcia",
-    "age": 20,
-    "email": "ethan.garcia@example.com",
-    "department": "Physics",
-    "gpa": 3.5
-  }
-]
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Bluetooth Headphones",
+      "category": "Audio",
+      "price": 2499,
+      "description": "High-quality wireless headphones with deep bass and long battery life.",
+      "image": "https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Smartphone",
+      "category": "Electronics",
+      "price": 18999,
+      "description": "Powerful smartphone with a clear display and smooth performance.",
+      "image": "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "Laptop",
+      "category": "Electronics",
+      "price": 45999,
+      "description": "Lightweight laptop suitable for work and productivity.",
+      "image": "https://images.pexels.com/photos/18105/pexels-photo.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Smart Watch",
+      "category": "Wearables",
+      "price": 3499,
+      "description": "Smartwatch with fitness tracking and notifications.",
+      "image": "https://images.pexels.com/photos/267394/pexels-photo-267394.jpeg"
+    },
+    {
+      "id": 5,
+      "name": "Tablet",
+      "category": "Electronics",
+      "price": 15999,
+      "description": "Portable tablet for entertainment and everyday tasks.",
+      "image": "https://images.pexels.com/photos/5082579/pexels-photo-5082579.jpeg"
+    },
+    {
+      "id": 6,
+      "name": "Portable Bluetooth Speaker",
+      "category": "Audio",
+      "price": 1999,
+      "description": "Compact speaker with loud and clear sound.",
+      "image": "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg"
+    },
+    {
+      "id": 7,
+      "name": "Gaming Console",
+      "category": "Gaming",
+      "price": 29999,
+      "description": "High-performance gaming console for immersive gameplay.",
+      "image": "https://images.pexels.com/photos/1298601/pexels-photo-1298601.jpeg"
+    },
+    {
+      "id": 8,
+      "name": "Digital Camera",
+      "category": "Photography",
+      "price": 25999,
+      "description": "High-resolution camera for photos and videos.",
+      "image": "https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg"
+    },
+    {
+      "id": 9,
+      "name": "Wireless Mouse",
+      "category": "Accessories",
+      "price": 499,
+      "description": "Ergonomic wireless mouse with smooth control.",
+      "image": "https://images.pexels.com/photos/2115256/pexels-photo-2115256.jpeg"
+    },
+    {
+      "id": 10,
+      "name": "Keyboard",
+      "category": "Accessories",
+      "price": 799,
+      "description": "Durable keyboard with comfortable typing experience.",
+      "image": "https://images.pexels.com/photos/2115217/pexels-photo-2115217.jpeg"
+    },
+    {
+      "id": 11,
+      "name": "External Hard Drive",
+      "category": "Storage",
+      "price": 3499,
+      "description": "Portable hard drive for backup and storage.",
+      "image": "https://images.pexels.com/photos/159226/pexels-photo-159226.jpeg"
+    },
+    {
+      "id": 12,
+      "name": "USB Flash Drive",
+      "category": "Storage",
+      "price": 399,
+      "description": "Compact USB drive for quick data transfer.",
+      "image": "https://images.pexels.com/photos/209728/pexels-photo-209728.jpeg"
+    },
+    {
+      "id": 13,
+      "name": "Smart Thermostat",
+      "category": "Home Tech",
+      "price": 4999,
+      "description": "Smart thermostat for automated temperature control.",
+      "image": "https://images.pexels.com/photos/4792494/pexels-photo-4792494.jpeg"
+    },
+    {
+      "id": 14,
+      "name": "Fitness Tracker",
+      "category": "Wearables",
+      "price": 2599,
+      "description": "Track steps, heart rate, and daily activity.",
+      "image": "https://images.pexels.com/photos/437038/pexels-photo-437038.jpeg"
+    },
+    {
+      "id": 15,
+      "name": "VR Headset",
+      "category": "Gaming",
+      "price": 32999,
+      "description": "Virtual reality headset with immersive visuals.",
+      "image": "https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg"
+    },
+    {
+      "id": 16,
+      "name": "Portable Projector",
+      "category": "Electronics",
+      "price": 8999,
+      "description": "Compact projector for movies and presentations.",
+      "image": "https://images.pexels.com/photos/799137/pexels-photo-799137.jpeg"
+    },
+    {
+      "id": 17,
+      "name": "Bluetooth Earbuds",
+      "category": "Audio",
+      "price": 1499,
+      "description": "Wireless earbuds with clear audio quality.",
+      "image": "https://images.pexels.com/photos/3780681/pexels-photo-3780681.jpeg"
+    },
+    {
+      "id": 18,
+      "name": "Gaming Chair",
+      "category": "Furniture",
+      "price": 7999,
+      "description": "Comfortable gaming chair with ergonomic support.",
+      "image": "https://images.pexels.com/photos/7915288/pexels-photo-7915288.jpeg"
+    },
+    {
+      "id": 19,
+      "name": "Desk Lamp",
+      "category": "Home",
+      "price": 899,
+      "description": "LED desk lamp for work and study.",
+      "image": "https://images.pexels.com/photos/112811/pexels-photo-112811.jpeg"
+    },
+    {
+      "id": 20,
+      "name": "Coffee Maker",
+      "category": "Kitchen",
+      "price": 2499,
+      "description": "Modern coffee maker for daily use.",
+      "image": "https://images.pexels.com/photos/585750/pexels-photo-585750.jpeg"
+    }
+  ]
+}
