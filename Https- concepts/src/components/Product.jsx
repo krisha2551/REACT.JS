@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+
 import Loading from "./Loading";
-import axios from "axios";
+import Navbar from "./Navbar";
+import CartModal from "./CartModal";
 
 const Product = () => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
 
   //   useEffect(() => {
   //     const productData = async () => {
@@ -70,6 +76,28 @@ const Product = () => {
     fetchProductData();
   }, []);
 
+  const handleCart = (prod) => {
+    const similarProduct = cart.find((item) => {
+      return item.id === prod.id;
+    });
+
+    if (similarProduct) {
+      setCart((prevItems) =>
+        prevItems.map((item) =>
+          item.id === prod.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      );
+    } else {
+      setCart((prevItems) => [...prevItems, { ...prod, quantity: 1 }]);
+    }
+
+    alert("item added to cart")
+
+    console.log("similarProduct", similarProduct);
+  };
+
+  console.log("cart Data", cart);
+
   if (loading) {
     return <Loading />;
   }
@@ -80,39 +108,51 @@ const Product = () => {
 
   return (
     <>
-      {/* {product.map((prod)=>{
-        return (    
+      <Navbar cartItems={cart.length} onShow={() => setShowCart(true)} />
 
-            <>
-            <li key={prod.id}>{prod.name}</li>
-            <img src={prod.image} alt={prod.name} width={200} />
-            <li>{prod.price}</li>
-            </>
-        )
-    })} */}
-
+      {showCart && (
+        <CartModal
+          onShow={showCart}
+          onClose={() => setShowCart(false)}
+          products={cart}
+          clearCart={()=>setCart([])}
+        
+        />
+      )}
       <Container>
         <Row>
           {product.map((prod) => {
             return (
-              <>
-                <Col md={3} sm={6} key={prod.id}>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src={prod.image}
-                      alt={prod.name}
-                      style={{ maxHeight: "200px" }}
-                    />
-                    <Card.Body>
-                      <Card.Title>{prod.name}</Card.Title>
-                      <Card.Text>{prod.description}</Card.Text>
-                      <Card.Title> ₹{prod.price}</Card.Title>
-                      <Button variant="primary">Add to card</Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </>
+              <Col md={3} sm={6} key={prod.id} className="g-4">
+                <Card className="h-100">
+                  <Card.Img
+                    variant="top"
+                    src={prod.image}
+                    alt={prod.name}
+                    style={{
+                      height: "200px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <Card.Body className="d-flex flex-column">
+                    <Card.Title>{prod.name}</Card.Title>
+
+                    <Card.Text className="text-truncate">
+                      {prod.description}
+                    </Card.Text>
+
+                    <Card.Title className="mt-2">₹{prod.price}</Card.Title>
+
+                    <Button
+                      variant="primary"
+                      className="mt-auto align-self-start"
+                      onClick={() => handleCart(prod)}
+                    >
+                      Add to cart
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
             );
           })}
         </Row>

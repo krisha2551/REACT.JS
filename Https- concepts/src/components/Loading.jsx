@@ -5,8 +5,12 @@ import Spinner from 'react-bootstrap/Spinner';
 const Loading = () => {
   return (
    <>
-    <Spinner className='mx-auto m-auto' animation="border" variant="info" />
-    <p>Loading ...</p>
+ <div className="d-flex flex-column justify-content-center align-items-center vh-100">
+  <Spinner animation="border" variant="info" />
+  <p className="mt-2">Loading...</p>
+</div>
+
+ 
    </>
   )
 }
