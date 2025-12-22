@@ -1,17 +1,3 @@
-// import React from 'react'
-// import { createPortal } from 'react-dom'
-
-// const CartModal = () => {
-//   return createPortal(
-//     <h1>
-//         this is cart portal
-//     </h1>,
-//     document.getElementById("modal-root")
-//   )
-// }
-
-// export default CartModal
-
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
@@ -34,21 +20,8 @@ function CartModal({ onShow, onClose, products,clearCart }) {
     };
 
     try {
-      // const res = await fetch("http://localhost:5000/orders", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(orderData),
-      // });
-
-      // if (!res.ok) {
-      //   throw new Error("failed to place order");
-      // }
-
+        
       const res = await axios.post("http://localhost:5000/orders",orderData)
-
-   
 
       alert("order placed successfully");
       onClose()

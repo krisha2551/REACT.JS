@@ -12,41 +12,14 @@ import Navbar from "./Navbar";
 import CartModal from "./CartModal";
 
 const Product = () => {
-  const [product, setProduct] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [cart, setCart] = useState([]);
-  const [showCart, setShowCart] = useState(false);
+const [product, setProduct] = useState([]);
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState("");
+const [cart, setCart] = useState([]);
+const [showCart, setShowCart] = useState(false);
 
-  //   useEffect(() => {
-  //     const productData = async () => {
-  //       setLoading(true);
 
-  //       try {
-  //         const res = await fetch("http://localhost:5000/products");
-
-  //         if (!res.ok) {
-  //           throw new Error("failed to fetch product data");
-  //         }
-
-  //         const data = await res.json();
-
-  //         if (data.length <= 0) {
-  //           throw new Error("no product data found");
-  //         }
-
-  //         setProduct(data);
-  //       } catch (error) {
-  //         setError(error.message);
-  //       }
-
-  //       setLoading(false);
-  //     };
-
-  //     productData();
-  //   }, []);
-
-  useEffect(() => {
+useEffect(() => {
     const fetchProductData = async () => {
       try {
         setLoading(true);
