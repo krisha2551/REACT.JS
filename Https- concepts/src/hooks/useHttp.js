@@ -1,7 +1,7 @@
-import axios from "axios";
+
 import { useCallback, useState } from "react";
 
-const BASE_URL = "http://localhost:5000";
+const URL = "http://localhost:5000";
 
 const useHttp = () => {
   const [data, setData] = useState(null);
@@ -14,15 +14,15 @@ const useHttp = () => {
       setError(null);
 
       try {
-        const response = await axios({
-          url: BASE_URL + url,
+        const response = await ({
+          url: URL + url,
           method,
           data: body,
           ...config,
         });
 
         setData(response.data);
-        return response.data;
+        
       } catch (err) {
         setError(err.message || "Something went wrong");
         throw err;
