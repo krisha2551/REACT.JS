@@ -1,32 +1,38 @@
+// import React from 'react'
+// import { createPortal } from 'react-dom'
+
+// const CartModal = () => {
+//   return createPortal(
+//     <h1>
+//         this is cart portal
+//     </h1>,
+//     document.getElementById("modal-root")
+//   )
+// }
+
+// export default CartModal
+
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Table from "react-bootstrap/Table";
 import Image from "react-bootstrap/Image";
 import axios from "axios";
+import useHttp from "../hooks/http";
+import Loading from "./Loading";
+import Error from "./Error";
 
-function CartModal({ onShow, onClose, products, setCart, clearCart, setMessage }) {
-  const totalAmount = products.reduce(
-    (acc, curr) => acc + curr.price * curr.quantity,
-    0
-  );
+function CartModal({ onShow, onClose, products, clearCart }) {
+  const url = "http://localhost:5000/orders";
 
-  const updateQty = (id, type) => {
-    setCart((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? {
-              ...item,
-              quantity:
-                type === "inc"
-                  ? item.quantity + 1
-                  : Math.max(1, item.quantity - 1),
-            }
-          : item
-      )
-    );
-  };
+  const { loading, error, sendRequest } = useHttp({ url, method: "POST" });
+
+  const totalAmount = products.reduce((acc, curr) => {
+    return (acc += curr.price * curr.quantity);
+  }, 0);
 
   const handlePlaceOrder = async () => {
+    // if(products.length<=0) return
+
     const orderData = {
       products,
       totalAmount,
@@ -34,66 +40,100 @@ function CartModal({ onShow, onClose, products, setCart, clearCart, setMessage }
       CreateAt: new Date().toISOString(),
     };
 
-    await axios.post("http://localhost:5000/orders", orderData);
-    setMessage("Order placed successfully");
-    clearCart();
-    onClose();
+    try {
+      // const res = await fetch("http://localhost:5000/orders", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(orderData),
+      // });
+
+      // if (!res.ok) {
+      //   throw new Error("failed to place order");
+      // }
+
+      // const res = await axios.post("http://localhost:5000/orders",orderData)
+
+      sendRequest(orderData);
+
+      alert("order placed successfully");
+      onClose();
+      clearCart();
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <Error />;
+  }
+
   return (
-    <Modal show={onShow} onHide={onClose} centered size="lg">
-      <Modal.Header closeButton>
-        <Modal.Title>Your Cart</Modal.Title>
-      </Modal.Header>
+    <div
+      className="modal show d-flex flex-column justify-content-center align-items-center"
+      style={{ display: "block", position: "initial" }}
+    >
+      <Modal show={onShow} onHide={onClose} centered size="lg">
+        <Modal.Header closeButton>
+          <Modal.Title>Your Cart Items</Modal.Title>
+        </Modal.Header>
 
-      <Modal.Body>
-        {products.length === 0 ? (
-          <p className="text-center">Your cart is empty</p>
-        ) : (
-          <Table bordered responsive>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Qty</th>
-                <th>Subtotal</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((item, index) => (
-                <tr key={item.id}>
-                  <td>{index + 1}</td>
-                  <td>
-                    <Image src={item.image} style={{ width: 70 }} />
-                  </td>
-                  <td>{item.name}</td>
-                  <td>₹{item.price}</td>
-                  <td>
-                    <Button size="sm" onClick={() => updateQty(item.id, "dec")}>
-                      -
-                    </Button>
-                    <span className="mx-2">{item.quantity}</span>
-                    <Button size="sm" onClick={() => updateQty(item.id, "inc")}>
-                      +
-                    </Button>
-                  </td>
-                  <td>₹{item.price * item.quantity}</td>
+        <Modal.Body>
+          {products.length <= 0 ? (
+            <p className="text-center">Your Cart Is empty</p>
+          ) : (
+            <Table bordered hover responsive>
+              <thead>
+                <tr>
+                  <th>Sr.no</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>SubTotal</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        )}
-      </Modal.Body>
-
-      {products.length > 0 && (
-        <Modal.Footer className="justify-content-between">
-          <h5>Total: ₹{totalAmount}</h5>
-          <Button onClick={handlePlaceOrder}>Place Order</Button>
-        </Modal.Footer>
-      )}
-    </Modal>
+              </thead>
+              <tbody>
+                {products.map((item, index) => (
+                  <tr key={item.id}>
+                    <td>{index + 1}</td>
+                    <td>
+                      {
+                        <Image
+                          rounded
+                          src={item.image}
+                          alt={item.name}
+                          style={{ maxWidth: "100px", objectFit: "contain" }}
+                        />
+                      }
+                    </td>
+                    <td>{item.name}</td>
+                    <td>₹{item.price}</td>
+                    <td>{item.quantity}</td>
+                    <td>₹{item.price * item.quantity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          )}
+        </Modal.Body>
+        {products.length > 0 ? (
+          <Modal.Footer className="d-flex justify-content-between w-100">
+            <div>
+              <h5>Total Amount = ₹{totalAmount}</h5>
+            </div>
+            <Button variant="primary" onClick={() => handlePlaceOrder()}>
+              Place Order
+            </Button>
+          </Modal.Footer>
+        ) : null}
+      </Modal>
+    </div>
   );
 }
 
