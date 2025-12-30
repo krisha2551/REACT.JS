@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   products: [],
+  updateState: null,
 };
 
 const product = createSlice({
@@ -10,7 +11,22 @@ const product = createSlice({
   reducers: {
     addProduct: (state, action) => {
       state.products.push(action.payload);
-      // console.log("product data", [...state.products]);
+    },
+
+    setUpdateState: (state, action) => {
+      state.updateState = action.payload;
+    },
+
+    updateProductData: (state, action) => {
+      const index = state.products.findIndex(
+        (prod) => prod.id === action.payload.id
+      );
+
+      if (index !== -1) {
+        state.products[index] = action.payload;
+      }
+      state.updateState = null;
+      
     },
 
     deleteProduct: (state, action) => {
@@ -21,6 +37,7 @@ const product = createSlice({
   },
 });
 
-export const { addProduct,deleteProduct } = product.actions;
+export const { addProduct, deleteProduct, setUpdateState, updateProductData } =
+  product.actions;
 
 export default product.reducer;

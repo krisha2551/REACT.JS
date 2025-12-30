@@ -1,54 +1,50 @@
-import React from "react";
+import { Card, Table, Button } from "react-bootstrap";
+import { FaPenFancy, FaTrashAlt, FaBoxOpen } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct } from "../features/product/productSlice";
+import { deleteProduct, setUpdateState } from "../features/product/productSlice";
 
-const ProductList = () => {
-  const product = useSelector((state) => state.product.products);
-
-  console.log("product", product);
-
+export default function ProductList() {
+  const products = useSelector(state => state.product.products);
   const dispatch = useDispatch();
 
-  const handleDelete = (id) => {
-    dispatch(deleteProduct(id));
-  };
 
   return (
-    <>
-      <table border={1}>
-        <thead>
+    <Card className="p-4 shadow">
+      <h4 className="text-center mb-3">Product List</h4>
+      <Table bordered hover responsive>
+        <thead className="table-dark">
           <tr>
-            <th>ID</th>
-            <th>name</th>
-            <th>price</th>
-            <th>qty</th>
-            <th>category</th>
-            <th colSpan={2}>action</th>
+            <th>ID</th><th>Name</th><th>Price</th><th>Qty</th><th>Category</th><th>Amount</th><th colSpan="2">Action</th>
           </tr>
         </thead>
         <tbody>
-          {product.length <= 0 ? (
+          {products.length === 0 ? (
             <tr>
-              <td>no data found</td>
+              <td colSpan={8} className="text-center text-muted">
+                <FaBoxOpen className="me-2 text-danger"/> No Data Found
+              </td>
             </tr>
           ) : (
-            product.map((prod) => (
-              <tr key={prod.id}>
-                <td>{prod.id}</td>
-                <td>{prod.name}</td>
-                <td>{prod.price}</td>
-                <td>{prod.qty}</td>
-                <td>{prod.category}</td>
-                <td>
-                  <button onClick={() => handleDelete(prod.id)}>delete</button>
-                </td>
-              </tr>
-            ))
+            <>
+              {products.map(p => (
+                <tr key={p.id}>
+                  <td>{p.id}</td><td>{p.name}</td><td>₹{p.price}</td><td>{p.qty}</td><td>{p.category}</td><td>₹{p.qty * p.price}</td>
+                  <td>
+                    <Button size="md" variant="outline-warning" className="d-flex gap-2" onClick={()=>dispatch(setUpdateState(p))}>
+                      <FaPenFancy/> 
+                    </Button>
+                  </td>
+                  <td>
+                    <Button size="md" variant="outline-danger" className="d-flex gap-2" onClick={()=>dispatch(deleteProduct(p.id))}>
+                      <FaTrashAlt/> 
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </>
           )}
         </tbody>
-      </table>
-    </>
+      </Table>
+    </Card>
   );
-};
-
-export default ProductList;
+}
