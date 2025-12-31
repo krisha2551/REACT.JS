@@ -3,7 +3,7 @@ import { FaPenFancy, FaTrashAlt, FaBoxOpen } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, setUpdateState } from "../features/product/productSlice";
 
-export default function ProductList() {
+const ProductList = () => {
   const products = useSelector(state => state.product.products);
   const dispatch = useDispatch();
 
@@ -48,3 +48,4 @@ export default function ProductList() {
     </Card>
   );
 }
+export default ProductList;

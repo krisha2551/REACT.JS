@@ -4,7 +4,7 @@ import { FaBoxes, FaPlus } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct, updateProductData } from "../features/product/productSlice";
 
-export default function ProductForm() {
+const ProductForm = () =>{
   const [product, setProduct] = useState({ name: "", price: "", qty: 10, category: "" });
   const updateState = useSelector(state => state.product.updateState);
   const dispatch = useDispatch();
@@ -43,3 +43,4 @@ export default function ProductForm() {
     </Card>
   );
 }
+export default ProductForm;

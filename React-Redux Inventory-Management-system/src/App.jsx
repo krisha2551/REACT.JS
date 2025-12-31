@@ -6,6 +6,7 @@ import ProductList from "./components/ProductList";
 export default function App() {
   return (
     <Container className="mt-4">
+      <InventoryStats />
       <ProductForm />
       <ProductList />
     </Container>
