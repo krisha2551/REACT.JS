@@ -11,10 +11,13 @@ const product = createSlice({
   reducers: {
     addProduct: (state, action) => {
       state.products.push(action.payload);
+    
     },
 
     setUpdateState: (state, action) => {
       state.updateState = action.payload;
+
+      
     },
 
     updateProductData: (state, action) => {
@@ -22,11 +25,11 @@ const product = createSlice({
         (prod) => prod.id === action.payload.id
       );
 
-      if (index !== -1) {
+      if (index != -1) {
         state.products[index] = action.payload;
       }
+
       state.updateState = null;
-      
     },
 
     deleteProduct: (state, action) => {

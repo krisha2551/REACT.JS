@@ -1,14 +1,31 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import ProductForm from "./components/ProductForm";
 import ProductList from "./components/ProductList";
 
-export default function App() {
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+import { HiCubeTransparent } from "react-icons/hi2";
+import InventoryStats from "./components/InventoryStats";
+
+const App = () => {
   return (
-    <Container className="mt-4">
-      <InventoryStats />
-      <ProductForm />
-      <ProductList />
-    </Container>
+    <>
+      <Container>
+        <Row>
+          <Col>
+            <h1 className="text-center mt-3">
+              <HiCubeTransparent fontSize={50} /> Inventory Management System
+            </h1>
+            <InventoryStats />
+            <ProductForm />
+            <ProductList />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
-}
+};
+
+export default App;

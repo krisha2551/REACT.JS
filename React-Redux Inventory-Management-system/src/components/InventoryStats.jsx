@@ -1,52 +1,90 @@
 import React from "react";
-import { Card, Row, Col } from "react-bootstrap";
-import { FaBoxes, FaRupeeSign, FaArrowUp, FaArrowDown } from "react-icons/fa";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Card from "react-bootstrap/Card";
+
+import { AiOutlineProduct } from "react-icons/ai";
+import { FaRupeeSign } from "react-icons/fa";
+import { FaArrowTrendUp } from "react-icons/fa6";
+import { FaArrowTrendDown } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 
-
 const InventoryStats = () => {
-  const products = useSelector(state => state.product.products);
+  const products = useSelector((state) => state.product.products);
 
-  const totalProducts = products.length;
-  const totalValuation = products.reduce((sum, p) => sum + (p.qty * p.price), 0);
-  const highStock = products.filter(p => p.qty >= 50).length;
-  const lowStock = products.filter(p => p.qty <= 10).length;
+  const totalProduct = products ? products.length : 0;
+
+  const totalValuation = products
+    ? products.reduce((acc, curr) => {
+        return (acc += curr.price * curr.qty);
+      }, 0)
+    : 0;
+
+  const highStocks = products
+    ? products.filter((prod) => prod.qty > 10).length
+    : 0;
+
+  const lowStocks = products
+    ? products.filter((prod) => prod.qty <= 10).length
+    : 0;
 
   return (
-    <Row className="mb-4 text-center">
-      <Col md={3}>
-        <Card className="p-3 shadow border-0">
-          <FaBoxes size={26} className="text-primary mb-2" />
-          <h6>Total Products</h6>
-          <h4>{totalProducts}</h4>
-        </Card>
-      </Col>
+    <Container>
+      <Row className="mt-4   mb-3">
+        <Col md={3}>
+          <Card className="shadow">
+            <Card.Body>
+              <Card.Title>
+                <AiOutlineProduct /> All Product
+              </Card.Title>
+              <Card.Text>
+                <h3>{totalProduct}</h3>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col md={3}>
+          <Card className="shadow">
+            <Card.Body>
+              <Card.Title>
+                <FaRupeeSign /> Total Valuation
+              </Card.Title>
+              <Card.Text>
+                <h3>{totalValuation}</h3>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
 
-      <Col md={3}>
-        <Card className="p-3 shadow border-0">
-          <FaRupeeSign size={26} className="text-success mb-2" />
-          <h6>Total Valuation</h6>
-          <h4>₹ {totalValuation}</h4>
-        </Card>
-      </Col>
+        <Col md={3}>
+          <Card className="shadow">
+            <Card.Body>
+              <Card.Title>
+                <FaArrowTrendUp /> High Stocks
+              </Card.Title>
+              <Card.Text>
+                <h3>{highStocks}</h3>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
 
-      <Col md={3}>
-        <Card className="p-3 shadow border-0">
-          <FaArrowUp size={26} className="text-info mb-2" />
-          <h6>High Stock</h6>
-          <h4>{highStock}</h4>
-        </Card>
-      </Col>
-
-      <Col md={3}>
-        <Card className="p-3 shadow border-0">
-          <FaArrowDown size={26} className="text-danger mb-2" />
-          <h6>Low Stock</h6>
-          <h4>{lowStock}</h4>
-        </Card>
-      </Col>
-    </Row>
+        <Col md={3}>
+          <Card className="shadow">
+            <Card.Body>
+              <Card.Title>
+                <FaArrowTrendDown /> Low Stocks
+              </Card.Title>
+              <Card.Text>
+                <h3>{lowStocks}</h3>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default InventoryStats;
