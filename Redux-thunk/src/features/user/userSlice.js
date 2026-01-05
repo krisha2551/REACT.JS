@@ -23,9 +23,12 @@ const user = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    addUser: (state, action) => {
+      state.users.push(action.payload);
+    },
   },
 });
 
-export const { requestStart, requestSuccess, requestFail } = user.actions;
+export const { requestStart, requestSuccess, requestFail, addUser } = user.actions;
 
 export default user.reducer;
