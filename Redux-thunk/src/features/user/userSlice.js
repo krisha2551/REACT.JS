@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 };
 
-const user = createSlice({
+const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
@@ -16,8 +16,7 @@ const user = createSlice({
     },
     requestSuccess: (state, action) => {
       state.loading = false;
-      state.users = action.payload
-      
+      state.users = action.payload;
     },
     requestFail: (state, action) => {
       state.loading = false;
@@ -26,9 +25,18 @@ const user = createSlice({
     addUser: (state, action) => {
       state.users.push(action.payload);
     },
+    deleteUser: (state, action) => {
+      state.users = state.users.filter((u) => u.id !== action.payload);
+    },
   },
 });
 
-export const { requestStart, requestSuccess, requestFail, addUser } = user.actions;
+export const {
+  requestStart,
+  requestSuccess,
+  requestFail,
+  addUser,
+  deleteUser,
+} = userSlice.actions;
 
-export default user.reducer;
+export default userSlice.reducer;

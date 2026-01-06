@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData, addUserData } from "../features/user/userThunk";
+import { fetchData, addUserData, deleteUserData } from "../features/user/userThunk";
 
 const UserLists = () => {
   const { users, loading, error } = useSelector((state) => state.users);
-
-  // console.log("users data", users);
-
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
@@ -18,18 +15,15 @@ const UserLists = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name) return;
-
     dispatch(addUserData({ name }));
     setName("");
   };
 
   if (loading) return <p>Loading...</p>;
-  
   if (error) return <p>{error}</p>;
 
   return (
     <>
-      
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -43,8 +37,9 @@ const UserLists = () => {
       <table border="1" cellPadding="8">
         <thead>
           <tr>
-            <th>Id</th>
+            <th>ID</th>
             <th>Name</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -52,6 +47,11 @@ const UserLists = () => {
             <tr key={u.id}>
               <td>{u.id}</td>
               <td>{u.name}</td>
+              <td>
+                <button onClick={() => dispatch(deleteUserData(u.id))}>
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
