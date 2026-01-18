@@ -29,7 +29,7 @@ const TripsData = () => {
                 <Card.Title className="fw-semibold mb-3">{t.name}</Card.Title>
 
                 <Button
-                  variant="primary"
+                  variant="outline-primary"
                   className="mt-auto"
                   onClick={() => navigate(`/trips/${t.id}`)}
                 >
