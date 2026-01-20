@@ -8,7 +8,7 @@ function NavbarMenu() {
         <Navbar.Brand href="#home">Travelia</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav className="ms-auto"> 
             <Nav.Link as={NavLink} to="/">
               Home
             </Nav.Link>
@@ -17,7 +17,9 @@ function NavbarMenu() {
             </Nav.Link>
             <Nav.Link href="#link">Destinations</Nav.Link>
             <Nav.Link href="#link">About</Nav.Link>
-            <Nav.Link href="#link">Login</Nav.Link>
+            <Nav.Link as={NavLink} to="/login">
+              Login
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
